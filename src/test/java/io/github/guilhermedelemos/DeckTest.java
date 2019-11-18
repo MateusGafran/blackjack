@@ -4,8 +4,10 @@ import io.github.guilhermedelemos.blackjack.Card;
 import io.github.guilhermedelemos.blackjack.Deck;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DeckTest {
 
@@ -29,4 +31,17 @@ public class DeckTest {
         assertTrue(deck.cardsDiscarded() > amount);
     }
 
+    @Test void cardsShuffle(){
+        Deck deck = new Deck();
+        List<Card> deckPadrao = new ArrayList<>();
+        for (int i=0; i < 52; i++){
+            deckPadrao.add(deck.viewCard(i));
+        }
+        deck.shuffle();
+        List<Card> deckShuffle = new ArrayList<>();
+        for (int i=0; i < 52; i++){
+            deckShuffle.add(deck.viewCard(i));
+        }
+        assertNotEquals(deckPadrao, deckShuffle);
+    }
 }

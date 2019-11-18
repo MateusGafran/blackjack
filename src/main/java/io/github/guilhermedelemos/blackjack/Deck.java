@@ -61,4 +61,7 @@ public class Deck {
         return this.originalSize - this.cards.size();
     }
 
+    public Card viewCard(int position){
+        return cards.get(position);
+    }
 }
